@@ -1,5 +1,5 @@
 ---
-title: '{highcharter} recreation of desktop screen readers line chart'
+title: '{highcharter} recreation of Highcarts accessible line chart'
 author: "Mara Averick"
 date: "10/24/2021"
 output: html_document
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Attempt to recreate the [first example](https://www.highcharts.com/docs/accessibility/accessibility-module) from the Highcharts accessibility module documentation as an htmlwidget using Joshua Kunst's [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
+Attempt to recreate the [Accessible line chart](https://www.highcharts.com/demo/accessible-line) example from the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module) documentation as an htmlwidget using Joshua Kunst's [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
 
 
 ```{r}
@@ -21,6 +21,7 @@ Attempt to recreate the [first example](https://www.highcharts.com/docs/accessib
 suppressPackageStartupMessages(library(tidyverse))
 library(highcharter)
 
+# read in exported csv from highcharts example
 url <- "https://gist.githubusercontent.com/batpigandme/aeb30566f899cdcdeb6024c0344d1ae1/raw/9cbafbbc99311c04b1a675e0ebb3953692fd51b8/pop-screenreaders.csv"
 raw_dat <- read_csv(url)
 
