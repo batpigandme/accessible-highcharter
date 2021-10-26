@@ -59,9 +59,9 @@ hchart(
     )
   ) %>%
   hc_colors(c('#49a65e', '#f45b5b', '#b381b3', '#5f98cf', '#434348', '#b68c51')) %>%
-  hc_add_dependency(name = "plugins/accessibility.js") %>%
-  hc_add_dependency(name = "plugins/exporting.js") %>%
-  hc_add_dependency(name = "plugins/export-data.js")
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js")
 
 # above gives you range in the screenreader description because it's
 # parsed as numeric
@@ -121,10 +121,10 @@ hchart(
     )
   ) %>%
   hc_tooltip(valueSuffix = "%") %>%
-  hc_add_dependency(name = "plugins/series-label.js") %>%
-  hc_add_dependency(name = "plugins/accessibility.js") %>%
-  hc_add_dependency(name = "plugins/exporting.js") %>%
-  hc_add_dependency(name = "plugins/export-data.js")
+  hc_add_dependency(name = "modules/series-label.js") %>%
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js")
 
 # need to add as individual series to set dashStyle?
 # can't get the accessibility description to actually appear in screenReader
@@ -169,10 +169,10 @@ sr_dat3 <- raw_dat %>%
 # But, I can't get the range in the xAxis screen reader description
 hc_sr_setup <- highchart() %>%
   # add dependencies
-  hc_add_dependency(name = "plugins/series-label.js") %>%
-  hc_add_dependency(name = "plugins/accessibility.js") %>%
-  hc_add_dependency(name = "plugins/exporting.js") %>%
-  hc_add_dependency(name = "plugins/export-data.js") %>%
+  hc_add_dependency(name = "modules/series-label.js") %>%
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js") %>%
   hc_chart(
     type = "spline",
     accessibility = list(
@@ -279,10 +279,10 @@ sr_dat4 <- raw_dat %>%
 # But, I can't get the range in the xAxis screen reader description
 hc_sr_setup <- highchart() %>%
   # add dependencies
-  hc_add_dependency(name = "plugins/series-label.js") %>%
-  hc_add_dependency(name = "plugins/accessibility.js") %>%
-  hc_add_dependency(name = "plugins/exporting.js") %>%
-  hc_add_dependency(name = "plugins/export-data.js") %>%
+  hc_add_dependency(name = "modules/series-label.js") %>%
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js") %>%
   hc_chart(
     type = "spline",
     accessibility = list(
