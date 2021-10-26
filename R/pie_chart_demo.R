@@ -94,3 +94,55 @@ hc_patterns <- c('M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
                  'M 10 3 L 5 3 L 5 0 M 5 10 L 5 7 L 0 7',
                  'M 2 5 L 5 2 L 8 5 L 5 8 Z',
                  'M 0 0 L 5 10 L 10 0')
+
+# from demo JS
+# var clrs = Highcharts.getOptions().colors;
+# var pieColors = [clrs[2], clrs[0], clrs[3], clrs[1], clrs[4]];
+#
+# // Get a default pattern, but using the pieColors above.
+# // The i-argument refers to which default pattern to use
+# function getPattern(i) {
+#   return {
+#     pattern: Highcharts.merge(Highcharts.patterns[i], {
+#       color: pieColors[i]
+#     })
+#   };
+# }
+#
+# // Get 5 patterns
+# var patterns = [0, 1, 2, 3, 4].map(getPattern);
+#
+#
+# patterns returned from console
+# getPattern(i)
+#
+# patterns[0]
+# color: "#49a65e"
+# height: 5
+# path: "M 0 0 L 5 5 M 4.5 -0.5 L 5.5 0.5 M -0.5 4.5 L 0.5 5.5"
+# patternTransform: "scale(1.4 1.4)"
+# width: 5
+# patterns[1]
+# color: "#5f98cf"
+# height: 5
+# path: "M 0 5 L 5 0 M -0.5 0.5 L 0.5 -0.5 M 4.5 5.5 L 5.5 4.5"
+# patternTransform: "scale(1.4 1.4)"
+# width: 5
+# patterns[2]
+# color: "#f45b5b"
+# height: 5
+# path: "M 2 0 L 2 5 M 4 0 L 4 5"
+# patternTransform: "scale(1.4 1.4)"
+# width: 5
+# patterns[3]
+# color: "#434348"
+# height: 5
+# path: "M 0 2 L 5 2 M 0 4 L 5 4"
+# patternTransform: "scale(1.4 1.4)"
+# width: 5
+# patterns[4]
+# color: "#708090"
+# height: 5
+# path: "M 0 1.5 L 2.5 1.5 L 2.5 0 M 2.5 5 L 2.5 3.5 L 5 3.5"
+# patternTransform: "scale(1.4 1.4)"
+# width: 5
