@@ -41,3 +41,7 @@ vignettes/*.pdf
 Rmd/rsconnect/documents/screen-reader-line-chart.Rmd/rpubs.com/rpubs/Document.dcf
 
 Rmd/rsconnect/documents/screen-reader-line-chart.Rmd/rpubs.com/rpubs/Publish Document.dcf
+
+Rmd/rsconnect/documents/accessible_pie_chart.Rmd/rpubs.com/rpubs/Document.dcf
+
+*.dcf

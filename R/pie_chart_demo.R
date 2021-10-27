@@ -34,10 +34,15 @@ hc_pie_setup <- highchart() %>%
       name = "Screen reader usage",
       dataLabels = list(
         enabled = TRUE,
-        connectorColor = "#777"
+        connectorColor = "#777",
+        format = "<b>{point.name}</b>: {point.percentage:.1f} %"
       ),
       cursor = "pointer",
       borderWidth = 3
+    ),
+    accessibility = list(
+      enabled = TRUE,
+      keyboardNavigation = list(enabled = TRUE)
     ),
     pie = list(
       fillColor = list(
@@ -80,7 +85,7 @@ hc_pie_setup %>%
     )
   ) %>%
   hc_colors(c("#49a65e", "#5f98cf", "#f45b5b", "#434348", "#708090"))
-
+# above works without patterns
 
 highcontrast_light_colors <- list('#5f98cf', '#434348', '#49a65e', '#f45b5b', '#708090', '#b68c51', '#397550', '#c0493d', '#4f4a7a', '#b381b3')
 # predefined highcharts patterns
@@ -146,3 +151,112 @@ hc_patterns <- c('M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
 # path: "M 0 1.5 L 2.5 1.5 L 2.5 0 M 2.5 5 L 2.5 3.5 L 5 3.5"
 # patternTransform: "scale(1.4 1.4)"
 # width: 5
+
+# pie chart attempt w/ data list ------------------------------------------
+library(highcharter)
+
+highchart() %>%
+  # add dependencies
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js") %>%
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/pattern-fill.js") %>%
+  hc_tooltip(
+    valueSuffix = "%",
+    borderColor = "#8ae"
+  ) %>%
+  hc_title(text = "Primary desktop/laptop screen readers") %>%
+  hc_subtitle(text = "Source: WebAIM.") %>%
+  hc_caption(text = "Pie chart demonstrating some accessibility features of Highcharts. The chart shows which screen reader is used as the primary screen reader by the respondents, with NVDA currently being the most popular one. The JAWS screen reader is following closely behind.") %>%
+  hc_exporting(
+    enabled = TRUE,
+    accessibility = list(
+      enabled = TRUE
+    )
+  ) %>%
+  hc_add_series(
+    type = "pie",
+    name = "Screen reader usage",
+    data = list(
+      list(
+        name = "NVDA",
+        y = 40.6,
+        color = list(
+          pattern = list(
+            path = "M 0 0 L 5 5 M 4.5 -0.5 L 5.5 0.5 M -0.5 4.5 L 0.5 5.5",
+            color = "#49a65e",
+            height = 5,
+            width = 5,
+            patternTransform = "scale(1.4 1.4)"
+          )
+        )
+      ),
+      list(
+        name = "JAWS",
+        y = 40.1,
+        color = list(
+          pattern = list(
+            path = "M 0 5 L 5 0 M -0.5 0.5 L 0.5 -0.5 M 4.5 5.5 L 5.5 4.5",
+            color = "#5f98cf",
+            height = 5,
+            width = 5,
+            patternTransform = "scale(1.4 1.4)"
+          )
+        )
+      ),
+      list(
+        name = "VoiceOver",
+        y = 12.9,
+        color = list(
+          pattern = list(
+            path = "M 2 0 L 2 5 M 4 0 L 4 5",
+            color = "#f45b5b",
+            height = 5,
+            width = 5,
+            patternTransform = "scale(1.4 1.4)"
+          )
+        )
+      ),
+      list(
+        name = "ZoomText",
+        y = 2,
+        color = list(
+          pattern = list(
+            path = "M 0 2 L 5 2 M 0 4 L 5 4",
+            color = "#434348",
+            height = 5,
+            width = 5,
+            patternTransform = "scale(1.4 1.4)"
+          )
+        )
+      ),
+      list(
+        name = "Other",
+        y = 4.4,
+        color = list(
+          pattern = list(
+            path = "M 0 1.5 L 2.5 1.5 L 2.5 0 M 2.5 5 L 2.5 3.5 L 5 3.5",
+            color = "#708090",
+            height = 5,
+            width = 5,
+            patternTransform = "scale(1.4 1.4)"
+          )
+        )
+      )
+    )
+  ) %>%
+  hc_plotOptions(
+    series = list(
+      dataLabels = list(
+        enabled = TRUE,
+        connectorColor = "#777",
+        format = "<b>{point.name}</b>: {point.percentage:.1f} %"
+      ),
+      cursor = "pointer",
+      borderWidth = 3
+    ),
+    accessibility = list(
+      enabled = TRUE,
+      keyboardNavigation = list(enabled = TRUE)
+    )
+  )
