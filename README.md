@@ -3,6 +3,6 @@
 
 ### Working examples
 
-* [Accessible line chart](https://rpubs.com/maraaverick/accessible-highcharter)
+* [Accessible line chart demo](https://rpubs.com/maraaverick/accessible-highcharter)
 
 * [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart)
