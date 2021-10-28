@@ -7,23 +7,25 @@ library(palmerpenguins)
 highchart() %>%
   hc_add_dependency(name = "modules/accessibility.js") %>%
   hc_add_dependency(name = "modules/annotations.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js") %>%
   hc_add_series(penguins, "scatter", hcaes(x = flipper_length_mm,
                                            y = bill_length_mm,
                                            group = species)) %>%
   # n.b. by not adding color above, you get "free" dual encoding
-  # od points with a different shape for the markers for each species
+  # of points with a different shape for the markers for each species
   hc_xAxis(
     title = list(text = "Flipper length (mm)"),
     accessibility = list(
       enabled = TRUE,
-      description = "flipper length in milimeters"
+      description = "flipper length in millimeters"
     )
   ) %>%
   hc_yAxis(
     title = list(text = "Bill length (mm)"),
     accessibility = list(
       enabled = TRUE,
-      description = "bill length in milimeters"
+      description = "bill length in millimeters"
     )
   ) %>%
   hc_annotations(
@@ -31,7 +33,8 @@ highchart() %>%
       labels = list(
         list(
           point = list(x = 201, y = 54.2, xAxis = 0, yAxis = 0),
-          text = "Chinstrap<br/>x: {x}<br/>y: {y}"
+          text = "Chinstrap<br/>x: {x}<br/>y: {y}",
+          shape = "connector" # defaults to callout
         )
       ),
       # below gives you screenreader descriptions of annotations
