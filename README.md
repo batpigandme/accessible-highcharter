@@ -6,3 +6,5 @@
 * [Accessible line chart demo](https://rpubs.com/maraaverick/accessible-highcharter)
 
 * [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart)
+
+* [Accessible scatterplot](http://rpubs.com/maraaverick/highcharter_palmerpenguins) (WIP)
