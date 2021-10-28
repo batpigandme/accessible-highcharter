@@ -12,7 +12,7 @@ highchart() %>%
   hc_add_series(penguins, "scatter", hcaes(x = flipper_length_mm,
                                            y = bill_length_mm,
                                            group = species)) %>%
-  # n.b. by not adding color above, you get "free" dual encoding
+  # n.b. by not adding color above, you get "automatic" dual encoding
   # of points with a different shape for the markers for each species
   hc_xAxis(
     title = list(text = "Flipper length (mm)"),
@@ -28,18 +28,27 @@ highchart() %>%
       description = "bill length in millimeters"
     )
   ) %>%
+  hc_title(
+    text = "Flipper length vs. bill length in <b>{palmerpenguins}</b>",
+    style = list(useHTML = TRUE)
+           ) %>%
+  hc_subtitle(
+    text = "Grouped by species: Adelie, Chinstrap, and Gentoo"
+    ) %>%
   hc_annotations(
     list(
       labels = list(
         list(
           point = list(x = 201, y = 54.2, xAxis = 0, yAxis = 0),
           text = "Chinstrap<br/>x: {x}<br/>y: {y}",
-          shape = "connector" # defaults to callout
+          shape = "connector" # defaults to 'callout'
         )
       ),
       # below gives you screenreader descriptions of annotations
       labelOptions = list(
         accessibility = list(
+          # probably wouldn't hard code description here if there was
+          # more than one point annotated
           description = "A Chinstrap penguin observation mapping to a flipper length of 201mm and bill length of 54.2mm."
       )
     )
@@ -58,5 +67,5 @@ highchart() %>%
       keyboardNavigation = list(enabled = TRUE)
     )
   ) %>%
-  # can still use the custom colors and keep shape if added here
+  # can still use the custom colors and keep shape per group if added here
   hc_colors(c("darkorange", "purple", "#057276"))
