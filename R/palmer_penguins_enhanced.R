@@ -10,8 +10,8 @@ highchart() %>%
   hc_add_series(penguins, "scatter", hcaes(x = flipper_length_mm,
                                            y = bill_length_mm,
                                            group = species)) %>%
-  # n.b. by not adding color, you get "free" dual encoding of points
-  # with the shape of the markers for each species
+  # n.b. by not adding color above, you get "free" dual encoding
+  # od points with a different shape for the markers for each species
   hc_xAxis(
     title = list(text = "Flipper length (mm)"),
     accessibility = list(
@@ -54,4 +54,6 @@ highchart() %>%
       enabled = TRUE,
       keyboardNavigation = list(enabled = TRUE)
     )
-  )
+  ) %>%
+  # can still use the custom colors and keep shape if added here
+  hc_colors(c("darkorange", "purple", "#057276"))
