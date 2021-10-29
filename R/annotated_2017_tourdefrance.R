@@ -152,6 +152,8 @@ highchart() %>%
 
 
 
+# notes for next time -----------------------------------------------------
+
 # n.b. the options below are chart-level (as opposed to plotOptions)
 # for some reason, when I pass them in, the chart doesn't render
 # hc_opts = list(
