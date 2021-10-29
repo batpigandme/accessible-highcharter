@@ -22,7 +22,45 @@ tdf_data <- read_csv(url) %>%
 
 ```{r}
 library(highcharter)
+```
 
+Test to see if you can define [`lang` options](https://api.highcharts.com/highcharts/lang) that are set on load for highcharter (see in repo [here](https://github.com/jbkunst/highcharter/blob/a9182b634cfcc12447431531e89a58abc1ea402f/R/zzz.R#L35)). The Highcharts documentation describes that:
+
+> The language object is global and it can't be set on each chart initialization.
+
+```{r}
+options(
+  highcharter.lang = list(
+    accessibility = list(
+      screenReaderSection = list(
+        annotations = list(
+          descriptionNoPoints = '{annotationText}, at distance {annotation.options.point.x}km, elevation {annotation.options.point.y} meters.'
+        )
+      )
+    )
+  )
+)
+```
+
+It worked!!
+
+It looks like this might also work for `highcharter.chart` options, which are also set on load in the highcharter package (see [here](https://github.com/jbkunst/highcharter/blob/a9182b634cfcc12447431531e89a58abc1ea402f/R/zzz.R#L81-L82)). These are [**chart**-level](https://api.highcharts.com/highcharts/chart) (as opposed to **plot**-level options), so they don't seem to work with `hc_plotOptions()`.
+
+Nope! Including the chunk immediately below gives us a chart with nothing in it... Need to investigate further.
+
+```{r eval = FALSE}
+options(
+  highcharter.chart = list(
+    accessibility = list(
+      linkedDescription = "This line chart uses the Highcharts Annotations feature to place labels at various points of interest. The labels are responsive and will be hidden to avoid overlap on small screens. Image description: An annotated line chart illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis, and distance is plotted on the X-axis. The line graph is interactive, and the user can trace the altitude level along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.",
+    landmarkVerbosity = "one"  
+    )
+  )
+)
+```
+
+
+```{r}
 highchart() %>%
   hc_add_dependency(name = "modules/accessibility.js") %>%
   hc_add_dependency(name = "modules/annotations.js") %>%
