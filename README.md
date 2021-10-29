@@ -7,4 +7,8 @@
 
 * [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart)
 
-* [Accessible scatterplot](http://rpubs.com/maraaverick/highcharter_palmerpenguins) (WIP)
+* [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins) (WIP)
+
+### Not so working examples
+
+* [Annotated area chart of 2017 Tour de France](https://rpubs.com/maraaverick/tourdefrance_highcharter_demo)
