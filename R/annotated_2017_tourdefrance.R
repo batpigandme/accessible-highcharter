@@ -8,8 +8,23 @@ tdf_data <- read_csv(url) %>%
   drop_na() # have some from data export
 
 
-# build chart with {highcharter} ------------------------------------------
+# load highcharter and set options ----------------------------------------
+
 library(highcharter)
+
+options(
+  highcharter.lang = list(
+    accessibility = list(
+      screenReaderSection = list(
+        annotations = list(
+          descriptionNoPoints = '{annotationText}, at distance {annotation.options.point.x}km, elevation {annotation.options.point.y} meters.'
+        )
+      )
+    )
+  )
+)
+
+# build chart with {highcharter} ------------------------------------------
 
 highchart() %>%
   hc_add_dependency(name = "modules/accessibility.js") %>%
