@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Attempt to recreate the [Accessible line chart](https://www.highcharts.com/demo/accessible-line) example from the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module) documentation as an htmlwidget using [Joshua Kunst](https://jkunst.com/)'s [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
+Attempt to recreate the [Accessible line chart](https://www.highcharts.com/demo/accessible-line) example from the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module) documentation as an [htmlwidget](https://www.htmlwidgets.org/) using [Joshua Kunst](https://jkunst.com/)'s [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
 
 
 ```{r}
