@@ -46,7 +46,7 @@ It worked!!
 
 It looks like this might also work for `highcharter.chart` options, which are also set on load in the highcharter package (see [here](https://github.com/jbkunst/highcharter/blob/a9182b634cfcc12447431531e89a58abc1ea402f/R/zzz.R#L81-L82)). These are [**chart**-level](https://api.highcharts.com/highcharts/chart) (as opposed to **plot**-level options), so they don't seem to work with `hc_plotOptions()`.
 
-Nope! Including the chunk immediately below gives us a chart with nothing in it... Need to investigate further.
+Nope! Including the chunk immediately below gives us a chart with nothing in it... Need to investigate further. (I'm just leaving it there so I can see what I tried&mdash;`eval` is set to `FALSE`, since you'll end up with an empty chart if you actually run it).
 
 ```{r eval = FALSE}
 options(
