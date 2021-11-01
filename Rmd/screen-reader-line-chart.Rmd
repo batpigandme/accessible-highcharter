@@ -9,11 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Attempt to recreate the [Accessible line chart](https://www.highcharts.com/demo/accessible-line) example from the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module) documentation as an htmlwidget using Joshua Kunst's [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
+Attempt to recreate the [Accessible line chart](https://www.highcharts.com/demo/accessible-line) example from the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module) documentation as an htmlwidget using [Joshua Kunst](https://jkunst.com/)'s [{highcharter}](https://jkunst.com/highcharter/index.html) R package.
 
 
 ```{r}
-# Indiv data series in different style ------------------------------------
+# Indiv data series in different styles ------------------------------------
 # recreating first example here: https://www.highcharts.com/docs/accessibility/accessibility-module
 # using Joshua Kunst's pattern fill examples as a model
 # see them here: https://jkunst.com/highcharter/articles/modules.html#pattern-fills-1
@@ -140,7 +140,73 @@ hc_sr_setup %>%
     )
   ) %>%
   hc_tooltip(valueSuffix = "%")
+```
 
-# But, I can't get the range in the xAxis screen reader description (because it's a chart-level option)
+### Notes on the above...
+
+The chart above doesn't use a particularly R-like (or ggplot2-like, which is what {highcharter} is modelled after) syntax. Each group _could_ be defined in the [`hcaes()`](https://jkunst.com/highcharter/reference/hcaes.html) argument, which:
+
+> Define[s] aesthetic mappings. Similar in spirit to `ggplot2::aes`
+
+This gets us pretty close (the code from my first attempt to recreate this chart is included below), but doesn't allow you to _manually_ define the [`dashStyle`](https://api.highcharts.com/highcharts/series.spline.dashStyle) and/or [`marker.symbol`](https://api.highcharts.com/highcharts/series.spline.marker.symbol) for each group (or, at least, I couldn't figure out how to do that). So, in the interest of getting a "dual encoding" (i.e. using both shape/style _and_ colour to distinguish the groups), I added each one as its own series.
+
+### Chart sans dual encoding
+
+You do end up with dual encoding for the marker symbols, you just don't get to decide which is which (which isn't much of a problem, really). There are probably other disparities between the two charts, as I made improvements to the "working" version as I went along and got more familiar with the API.
+
+```{r}
+# replace July with proper abbreviation
+raw_dat[4,1] <- "Jul 2015"
+
+# turn into "tidy" data format for categories
+sr_dat <- raw_dat %>%
+  separate(Category, into = c("month", "year")) %>%
+  select(-month) %>%
+  pivot_longer(!year, names_to = "screen_reader", values_to = "pct_usage") %>%
+  mutate(year = parse_number(year)) %>%
+  drop_na()
+
+hchart(
+  sr_dat,
+  "spline",
+  hcaes(x = year, y = pct_usage, group = screen_reader),
+  accessibility = list(
+    enabled = TRUE,
+    keyboardNavigation = list(enabled = TRUE),
+    linkedDescription = "Line chart demonstrating some accessibility features of Highcharts. The chart displays the most commonly used screen readers in surveys taken by WebAIM from December 2010 to September 2019. JAWS was the most used screen reader until 2019, when NVDA took over. VoiceOver is the third most used screen reader, followed by Narrator. ZoomText/Fusion had a surge in 2015, but usage is otherwise low. The overall use of other screen readers has declined drastically the past few years."
+  ),
+  exporting = list(
+    enabled = TRUE,
+    accessibility = list(enabled = TRUE)
+  )
+) %>%
+  hc_title(
+    text = "Most common desktop screen readers"
+  ) %>%
+  hc_subtitle(
+    text = "Source: WebAIM."
+  ) %>%
+  hc_xAxis(
+    title = list(text = "Time"),
+    accesibility = list(
+      enabled = TRUE,
+      description = list(text = "Time from December 2010 to September 2019"),
+      rangeDescription = "2010 to 2019"
+    )
+  ) %>%
+  hc_yAxis(
+    title = list(text = "Percentage usage"),
+    accessibility = list(description = "Percentage usage")
+  ) %>%
+  hc_exporting(
+    enabled = TRUE,
+    accessibility = list(
+      enabled = TRUE
+    )
+  ) %>%
+  hc_colors(c('#49a65e', '#f45b5b', '#b381b3', '#5f98cf', '#434348', '#b68c51')) %>%
+  hc_add_dependency(name = "modules/accessibility.js") %>%
+  hc_add_dependency(name = "modules/exporting.js") %>%
+  hc_add_dependency(name = "modules/export-data.js")
 ```
 
