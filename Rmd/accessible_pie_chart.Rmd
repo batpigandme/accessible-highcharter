@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Re-creation of the Highcharts [Accessible pie chart](https://www.highcharts.com/demo/accessible-pie) demo using the [**{highcharter}**](https://jkunst.com/highcharter/) package by [Joshua Kunst](https://jkunst.com/), and the Highcharts [accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module).
+Re-creation of the Highcharts [Accessible pie chart](https://www.highcharts.com/demo/accessible-pie) demo as an [htmlwidget](https://www.htmlwidgets.org/) using the [**{highcharter}**](https://jkunst.com/highcharter/) package by [Joshua Kunst](https://jkunst.com/), and the Highcharts [accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module).
 
 ```{r pie-chart}
 library(highcharter)
@@ -121,10 +121,36 @@ highchart() %>%
   )
 ```
 
+### Notes on the code
+
+As with the [accessible line chart recreation](https://rpubs.com/maraaverick/accessible-highcharter), the code here doesn't look terribly R-like (in fact, we're not using a data frame object at all). The reason is the same, too: in order to get the dual encoding (in this case, colour + pattern), each item was defined individually. Making a [basic pie chart using {highcharter}](https://jkunst.com/highcharter/articles/highcharts.html#pie) is not a heavy task. 
+
+The code above is very much reflects the fact that I reverse engineered this chart from the [original version](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie), which combined the indexed pattern definitions from the [Highcharts pattern fill module](https://www.highcharts.com/docs/chart-design-and-style/pattern-fills#svg-patterns) with colours (see un-run JavaScript code below).
+
+```{js, eval = FALSE}
+var clrs = Highcharts.getOptions().colors;
+var pieColors = [clrs[2], clrs[0], clrs[3], clrs[1], clrs[4]];
+
+// Get a default pattern, but using the pieColors above.
+// The i-argument refers to which default pattern to use
+function getPattern(i) {
+    return {
+        pattern: Highcharts.merge(Highcharts.patterns[i], {
+            color: pieColors[i]
+        })
+    };
+}
+
+// Get 5 patterns
+var patterns = [0, 1, 2, 3, 4].map(getPattern);
+```
+
+I imagine there's a way to reference the `patternIndex` from the R code, but I wasn't able to figure it out. I actually [ran the JavaScript in my console](https://developer.chrome.com/docs/devtools/console/javascript/) to get the color/pattern definitions (e.g. `Highcharts.patterns[0]`).
+
 ### Useful links
 
 * [Modules & plugins](https://jkunst.com/highcharter/articles/modules.html) higcharter vignette (especially the infographic example for [pattern fills](https://jkunst.com/highcharter/articles/modules.html#chart-6), which uses in-line list data).  
 
 * [Pattern fills](https://www.highcharts.com/docs/chart-design-and-style/pattern-fills) documentation from Highcharts.  
 
-* [Code for accessible pie chart](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie) in JSFiddle.
+* [Highcharts original code for accessible pie chart](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie) in JSFiddle.

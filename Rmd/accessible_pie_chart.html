@@ -11,7 +11,7 @@
 
 <meta name="author" content="Mara Averick" />
 
-<meta name="date" content="2021-10-27" />
+<meta name="date" content="2021-11-01" />
 
 <title>Accessible Pie Chart with {highcharter}</title>
 
@@ -214,16 +214,18 @@ pre code {
 
 <h1 class="title toc-ignore">Accessible Pie Chart with {highcharter}</h1>
 <h4 class="author">Mara Averick</h4>
-<h4 class="date">2021-10-27</h4>
+<h4 class="date">2021-11-01</h4>
 
 </div>
 
 
-<p>Re-creation of the Highcharts <a href="https://www.highcharts.com/demo/accessible-pie">Accessible pie chart</a> demo using the <a href="https://jkunst.com/highcharter/"><strong>{highcharter}</strong></a> package by <a href="https://jkunst.com/">Joshua Kunst</a>, and the Highcharts <a href="https://www.highcharts.com/docs/accessibility/accessibility-module">accessibility module</a>.</p>
+<p>Re-creation of the Highcharts <a href="https://www.highcharts.com/demo/accessible-pie">Accessible pie chart</a> demo as an <a href="https://www.htmlwidgets.org/">htmlwidget</a> using the <a href="https://jkunst.com/highcharter/"><strong>{highcharter}</strong></a> package by <a href="https://jkunst.com/">Joshua Kunst</a>, and the Highcharts <a href="https://www.highcharts.com/docs/accessibility/accessibility-module">accessibility module</a>.</p>
 <pre class="r"><code>library(highcharter)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
 ##   method            from
 ##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## Highcharts (www.highcharts.com) is a Highsoft software product which is</code></pre>
+<pre><code>## not free for commercial and Governmental use</code></pre>
 <pre class="r"><code>highchart() %&gt;%
   # add dependencies
   hc_add_dependency(name = &quot;modules/exporting.js&quot;) %&gt;%
@@ -329,14 +331,35 @@ pre code {
       keyboardNavigation = list(enabled = TRUE)
     )
   )</code></pre>
-<div id="htmlwidget-8fae875342ca415208ed" style="width:672px;height:480px;" class="highchart html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8fae875342ca415208ed">{"x":{"hc_opts":{"chart":{"reflow":true},"title":{"text":"Primary desktop/laptop screen readers"},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":true,"accessibility":{"enabled":true}},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"dataLabels":{"enabled":true,"connectorColor":"#777","format":"<b>{point.name}<\/b>: {point.percentage:.1f} %"},"cursor":"pointer","borderWidth":3},"treemap":{"layoutAlgorithm":"squarified"},"accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true}}},"tooltip":{"valueSuffix":"%","borderColor":"#8ae"},"subtitle":{"text":"Source: WebAIM."},"caption":{"text":"Pie chart demonstrating some accessibility features of Highcharts. The chart shows which screen reader is used as the primary screen reader by the respondents, with NVDA currently being the most popular one. The JAWS screen reader is following closely behind."},"series":[{"type":"pie","name":"Screen reader usage","data":[{"name":"NVDA","y":40.6,"color":{"pattern":{"path":"M 0 0 L 5 5 M 4.5 -0.5 L 5.5 0.5 M -0.5 4.5 L 0.5 5.5","color":"#49a65e","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"JAWS","y":40.1,"color":{"pattern":{"path":"M 0 5 L 5 0 M -0.5 0.5 L 0.5 -0.5 M 4.5 5.5 L 5.5 4.5","color":"#5f98cf","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"VoiceOver","y":12.9,"color":{"pattern":{"path":"M 2 0 L 2 5 M 4 0 L 4 5","color":"#f45b5b","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"ZoomText","y":2,"color":{"pattern":{"path":"M 0 2 L 5 2 M 0 4 L 5 4","color":"#434348","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"Other","y":4.4,"color":{"pattern":{"path":"M 0 1.5 L 2.5 1.5 L 2.5 0 M 2.5 5 L 2.5 3.5 L 5 3.5","color":"#708090","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-44ee5508d86fc3ac9ada" style="width:672px;height:480px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-44ee5508d86fc3ac9ada">{"x":{"hc_opts":{"chart":{"reflow":true},"title":{"text":"Primary desktop/laptop screen readers"},"yAxis":{"title":{"text":null}},"credits":{"enabled":false},"exporting":{"enabled":true,"accessibility":{"enabled":true}},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0,"dataLabels":{"enabled":true,"connectorColor":"#777","format":"<b>{point.name}<\/b>: {point.percentage:.1f} %"},"cursor":"pointer","borderWidth":3},"treemap":{"layoutAlgorithm":"squarified"},"accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true}}},"tooltip":{"valueSuffix":"%","borderColor":"#8ae"},"subtitle":{"text":"Source: WebAIM."},"caption":{"text":"Pie chart demonstrating some accessibility features of Highcharts. The chart shows which screen reader is used as the primary screen reader by the respondents, with NVDA currently being the most popular one. The JAWS screen reader is following closely behind."},"series":[{"type":"pie","name":"Screen reader usage","data":[{"name":"NVDA","y":40.6,"color":{"pattern":{"path":"M 0 0 L 5 5 M 4.5 -0.5 L 5.5 0.5 M -0.5 4.5 L 0.5 5.5","color":"#49a65e","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"JAWS","y":40.1,"color":{"pattern":{"path":"M 0 5 L 5 0 M -0.5 0.5 L 0.5 -0.5 M 4.5 5.5 L 5.5 4.5","color":"#5f98cf","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"VoiceOver","y":12.9,"color":{"pattern":{"path":"M 2 0 L 2 5 M 4 0 L 4 5","color":"#f45b5b","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"ZoomText","y":2,"color":{"pattern":{"path":"M 0 2 L 5 2 M 0 4 L 5 4","color":"#434348","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}},{"name":"Other","y":4.4,"color":{"pattern":{"path":"M 0 1.5 L 2.5 1.5 L 2.5 0 M 2.5 5 L 2.5 3.5 L 5 3.5","color":"#708090","height":5,"width":5,"patternTransform":"scale(1.4 1.4)"}}}]}]},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<div id="notes-on-the-code" class="section level3">
+<h3>Notes on the code</h3>
+<p>As with the <a href="https://rpubs.com/maraaverick/accessible-highcharter">accessible line chart recreation</a>, the code here doesn’t look terribly R-like (in fact, we’re not using a data frame object at all). The reason is the same, too: in order to get the dual encoding (in this case, colour + pattern), each item was defined individually. Making a <a href="https://jkunst.com/highcharter/articles/highcharts.html#pie">basic pie chart using {highcharter}</a> is not a heavy task.</p>
+<p>The code above is very much reflects the fact that I reverse engineered this chart from the <a href="https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie">original version</a>, which combined the indexed pattern definitions from the <a href="https://www.highcharts.com/docs/chart-design-and-style/pattern-fills#svg-patterns">Highcharts pattern fill module</a> with colours (see un-run JavaScript code below).</p>
+<pre class="js"><code>var clrs = Highcharts.getOptions().colors;
+var pieColors = [clrs[2], clrs[0], clrs[3], clrs[1], clrs[4]];
+
+// Get a default pattern, but using the pieColors above.
+// The i-argument refers to which default pattern to use
+function getPattern(i) {
+    return {
+        pattern: Highcharts.merge(Highcharts.patterns[i], {
+            color: pieColors[i]
+        })
+    };
+}
+
+// Get 5 patterns
+var patterns = [0, 1, 2, 3, 4].map(getPattern);</code></pre>
+<p>I imagine there’s a way to reference the <code>patternIndex</code> from the R code, but I wasn’t able to figure it out. I actually <a href="https://developer.chrome.com/docs/devtools/console/javascript/">ran the JavaScript in my console</a> to get the color/pattern definitions (e.g. <code>Highcharts.patterns[0]</code>).</p>
+</div>
 <div id="useful-links" class="section level3">
 <h3>Useful links</h3>
 <ul>
 <li><p><a href="https://jkunst.com/highcharter/articles/modules.html">Modules &amp; plugins</a> higcharter vignette (especially the infographic example for <a href="https://jkunst.com/highcharter/articles/modules.html#chart-6">pattern fills</a>, which uses in-line list data).</p></li>
 <li><p><a href="https://www.highcharts.com/docs/chart-design-and-style/pattern-fills">Pattern fills</a> documentation from Highcharts.</p></li>
-<li><p><a href="https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie">Code for accessible pie chart</a> in JSFiddle.</p></li>
+<li><p><a href="https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/accessible-pie">Highcharts original code for accessible pie chart</a> in JSFiddle.</p></li>
 </ul>
 </div>
 
