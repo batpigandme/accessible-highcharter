@@ -9,6 +9,4 @@
 
 * [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins) (WIP)
 
-### Not so working examples
-
 * [Annotated area chart of 2017 Tour de France](https://rpubs.com/maraaverick/tourdefrance_highcharter_demo)
