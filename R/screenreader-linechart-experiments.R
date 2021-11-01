@@ -199,6 +199,7 @@ hc_sr_setup <- highchart() %>%
     title = list(text = "Percentage usage"),
     accessibility = list(description = "Percentage usage")
   ) %>%
+  hc_legend(symbolWidth = 40) %>%
   hc_plotOptions(
     spline = list(
       accessibility = list(
@@ -225,41 +226,47 @@ hc_sr_setup %>%
     data = sr_dat3$NVDA,
     name = "NVDA",
     color = "#49a65e",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "circle")
   ) %>%
   hc_add_series(
     data = sr_dat3$JAWS,
     name = "JAWS",
     color = "#5f98cf",
     dashStyle = "ShortDashDot",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "diamond")
   ) %>%
   hc_add_series(
     data = sr_dat3$VoiceOver,
     name = "VoiceOver",
     color = "#434348",
     dashStyle = "ShortDot",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "square")
   ) %>%
   hc_add_series(
     data = sr_dat3$Narrator,
     name = "Narrator",
     color = "#b381b3",
     dashStyle = "Dash",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "triangle")
   ) %>%
   hc_add_series(
     data = sr_dat3$`ZoomText/Fusion`,
     name = "ZoomText/Fusion",
     color = "#b68c51",
     dashStyle = "ShortDot",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "triangle-down")
   ) %>%
   hc_add_series(
     data = sr_dat3$Other,
     name = "Other", color = "#f45b5b",
     dashStyle = "ShortDash",
-    label = list(enabled = TRUE)
+    label = list(enabled = TRUE),
+    marker = list(symbol = "circle")
   ) %>%
   hc_exporting(
     enabled = TRUE,

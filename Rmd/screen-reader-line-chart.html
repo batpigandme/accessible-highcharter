@@ -11,7 +11,7 @@
 
 <meta name="author" content="Mara Averick" />
 
-<meta name="date" content="2021-10-24" />
+<meta name="date" content="2021-11-01" />
 
 <title>{highcharter} recreation of Highcarts accessible line chart</title>
 
@@ -214,7 +214,7 @@ pre code {
 
 <h1 class="title toc-ignore">{highcharter} recreation of Highcarts accessible line chart</h1>
 <h4 class="author">Mara Averick</h4>
-<h4 class="date">10/24/2021</h4>
+<h4 class="date">2021-11-01</h4>
 
 </div>
 
@@ -230,8 +230,6 @@ library(highcharter)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
 ##   method            from
 ##   as.zoo.data.frame zoo</code></pre>
-<pre><code>## Highcharts (www.highcharts.com) is a Highsoft software product which is</code></pre>
-<pre><code>## not free for commercial and Governmental use</code></pre>
 <pre class="r"><code># read in exported csv from highcharts example
 url &lt;- &quot;https://gist.githubusercontent.com/batpigandme/aeb30566f899cdcdeb6024c0344d1ae1/raw/9cbafbbc99311c04b1a675e0ebb3953692fd51b8/pop-screenreaders.csv&quot;
 raw_dat &lt;- read_csv(url)</code></pre>
@@ -282,6 +280,7 @@ hc_sr_setup &lt;- highchart() %&gt;%
     title = list(text = &quot;Percentage usage&quot;),
     accessibility = list(description = &quot;Percentage usage&quot;)
   ) %&gt;%
+  hc_legend(symbolWidth = 40) %&gt;%
   hc_plotOptions(
     spline = list(
       accessibility = list(
@@ -303,47 +302,53 @@ hc_sr_setup %&gt;%
            dateTimeLabelFormats = list(
              month = list(main = &quot;%b %Y&quot;)
            )
-    ) %&gt;%
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$NVDA,
     name = &quot;NVDA&quot;,
     color = &quot;#49a65e&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;circle&quot;)
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$JAWS,
     name = &quot;JAWS&quot;,
     color = &quot;#5f98cf&quot;,
     dashStyle = &quot;ShortDashDot&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;diamond&quot;)
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$VoiceOver,
     name = &quot;VoiceOver&quot;,
     color = &quot;#434348&quot;,
     dashStyle = &quot;ShortDot&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;square&quot;)
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$Narrator,
     name = &quot;Narrator&quot;,
     color = &quot;#b381b3&quot;,
     dashStyle = &quot;Dash&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;triangle&quot;)
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$`ZoomText/Fusion`,
     name = &quot;ZoomText/Fusion&quot;,
     color = &quot;#b68c51&quot;,
     dashStyle = &quot;ShortDot&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;triangle-down&quot;)
+  ) %&gt;%
   hc_add_series(
     data = sr_dat3$Other,
     name = &quot;Other&quot;, color = &quot;#f45b5b&quot;,
     dashStyle = &quot;ShortDash&quot;,
-    label = list(enabled = TRUE)
-    ) %&gt;%
+    label = list(enabled = TRUE),
+    marker = list(symbol = &quot;circle&quot;)
+  ) %&gt;%
   hc_exporting(
     enabled = TRUE,
     accessibility = list(
@@ -351,9 +356,9 @@ hc_sr_setup %&gt;%
     )
   ) %&gt;%
   hc_tooltip(valueSuffix = &quot;%&quot;)</code></pre>
-<div id="htmlwidget-452ac8499ddd8f1cce32" style="width:672px;height:480px;" class="highchart html-widget"></div>
-<script type="application/json" data-for="htmlwidget-452ac8499ddd8f1cce32">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"spline","accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true},"linkedDescription":"Line chart demonstrating some accessibility features of Highcharts. The chart displays the most commonly used screen readers in surveys taken by WebAIM from December 2010 to September 2019. JAWS was the most used screen reader until 2019, when NVDA took over. VoiceOver is the third most used screen reader, followed by Narrator. ZoomText/Fusion had a surge in 2015, but usage is otherwise low. The overall use of other screen readers has declined drastically the past few years."},"dateTimeLabelFormats":{"month":{"main":"%b %Y"}}},"title":{"text":"Most common desktop screen readers"},"yAxis":{"title":{"text":"Percentage usage"},"accessibility":{"description":"Percentage usage"}},"credits":{"enabled":false},"exporting":{"enabled":true,"accessibility":{"enabled":true}},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"spline":{"accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true}}}},"subtitle":{"text":"Source: WebAIM."},"caption":{"text":"Line chart demonstrating some accessibility features of Highcharts. The chart displays the most commonly used screen readers in surveys taken by WebAIM from December 2010 to September 2019. JAWS was the most used screen reader until 2019, when NVDA took over. VoiceOver is the third most used screen reader, followed by Narrator. ZoomText/Fusion had a surge in 2015, but usage is otherwise low. The overall use of other screen readers has declined drastically the past few years."},"xAxis":{"categories":["Dec 2010","May 2012","Jan 2014","July 2015","Oct 2017","Sep 2019"],"title":{"text":"Time"},"accesibility":{"enabled":true,"description":"Time from December 2010 to September 2019","range":"December 2010 to September 2019"},"dateTimeLabelFormats":{"month":{"main":"%b %Y"}}},"series":[{"data":[34.8,43,51.2,41.4,64.9,72.4],"name":"NVDA","color":"#49a65e","label":{"enabled":true}},{"data":[69.6,63.7,63.9,43.7,66,61.7],"name":"JAWS","color":"#5f98cf","dashStyle":"ShortDashDot","label":{"enabled":true}},{"data":[20.2,30.7,36.8,30.9,39.6,47.1],"name":"VoiceOver","color":"#434348","dashStyle":"ShortDot","label":{"enabled":true}},{"data":[null,null,null,null,21.4,30.3],"name":"Narrator","color":"#b381b3","dashStyle":"Dash","label":{"enabled":true}},{"data":[6.1,6.8,5.3,27.5,6,5.5],"name":"ZoomText/Fusion","color":"#b68c51","dashStyle":"ShortDot","label":{"enabled":true}},{"data":[42.6,51.5,54.2,45.8,20.2,15.4],"name":"Other","color":"#f45b5b","dashStyle":"ShortDash","label":{"enabled":true}}],"tooltip":{"valueSuffix":"%"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
-<pre class="r"><code># But, I can&#39;t get the range in the xAxis screen reader description</code></pre>
+<div id="htmlwidget-d9df2c6300df215a89c5" style="width:672px;height:480px;" class="highchart html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d9df2c6300df215a89c5">{"x":{"hc_opts":{"chart":{"reflow":true,"type":"spline","accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true},"linkedDescription":"Line chart demonstrating some accessibility features of Highcharts. The chart displays the most commonly used screen readers in surveys taken by WebAIM from December 2010 to September 2019. JAWS was the most used screen reader until 2019, when NVDA took over. VoiceOver is the third most used screen reader, followed by Narrator. ZoomText/Fusion had a surge in 2015, but usage is otherwise low. The overall use of other screen readers has declined drastically the past few years."},"dateTimeLabelFormats":{"month":{"main":"%b %Y"}}},"title":{"text":"Most common desktop screen readers"},"yAxis":{"title":{"text":"Percentage usage"},"accessibility":{"description":"Percentage usage"}},"credits":{"enabled":false},"exporting":{"enabled":true,"accessibility":{"enabled":true}},"boost":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"spline":{"accessibility":{"enabled":true,"keyboardNavigation":{"enabled":true}}}},"subtitle":{"text":"Source: WebAIM."},"caption":{"text":"Line chart demonstrating some accessibility features of Highcharts. The chart displays the most commonly used screen readers in surveys taken by WebAIM from December 2010 to September 2019. JAWS was the most used screen reader until 2019, when NVDA took over. VoiceOver is the third most used screen reader, followed by Narrator. ZoomText/Fusion had a surge in 2015, but usage is otherwise low. The overall use of other screen readers has declined drastically the past few years."},"xAxis":{"categories":["Dec 2010","May 2012","Jan 2014","July 2015","Oct 2017","Sep 2019"],"title":{"text":"Time"},"accesibility":{"enabled":true,"description":"Time from December 2010 to September 2019","range":"December 2010 to September 2019"},"dateTimeLabelFormats":{"month":{"main":"%b %Y"}}},"legend":{"symbolWidth":40},"series":[{"data":[34.8,43,51.2,41.4,64.9,72.4],"name":"NVDA","color":"#49a65e","label":{"enabled":true},"marker":{"symbol":"circle"}},{"data":[69.6,63.7,63.9,43.7,66,61.7],"name":"JAWS","color":"#5f98cf","dashStyle":"ShortDashDot","label":{"enabled":true},"marker":{"symbol":"diamond"}},{"data":[20.2,30.7,36.8,30.9,39.6,47.1],"name":"VoiceOver","color":"#434348","dashStyle":"ShortDot","label":{"enabled":true},"marker":{"symbol":"square"}},{"data":[null,null,null,null,21.4,30.3],"name":"Narrator","color":"#b381b3","dashStyle":"Dash","label":{"enabled":true},"marker":{"symbol":"triangle"}},{"data":[6.1,6.8,5.3,27.5,6,5.5],"name":"ZoomText/Fusion","color":"#b68c51","dashStyle":"ShortDot","label":{"enabled":true},"marker":{"symbol":"triangle-down"}},{"data":[42.6,51.5,54.2,45.8,20.2,15.4],"name":"Other","color":"#f45b5b","dashStyle":"ShortDash","label":{"enabled":true},"marker":{"symbol":"circle"}}],"tooltip":{"valueSuffix":"%"}},"theme":{"chart":{"backgroundColor":"transparent"},"colors":["#7cb5ec","#434348","#90ed7d","#f7a35c","#8085e9","#f15c80","#e4d354","#2b908f","#f45b5b","#91e8e1"]},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadCSV":"Download CSV","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","downloadXLS":"Download XLS","drillUpText":"◁ Back to {series.name}","exitFullscreen":"Exit from full screen","exportData":{"annotationHeader":"Annotations","categoryDatetimeHeader":"DateTime","categoryHeader":"Category"},"hideData":"Hide data table","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbolMagnitude":1000,"numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"shortWeekdays":["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],"thousandsSep":" ","viewData":"View data table","viewFullscreen":"View in full screen","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># But, I can&#39;t get the range in the xAxis screen reader description (because it&#39;s a chart-level option)</code></pre>
 
 
 
