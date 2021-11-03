@@ -227,3 +227,56 @@ highchart() %>%
 
 ```
 
+## What's the benefit?
+
+At this point, you might be thinking: _“Wow, that's a lot of code&mdash;what's the payoff?”_
+
+I am a privileged, fully-sighted individual who does not rely on a screen reader, so I can't _truly_ phenomenologically assess the utility of the [Highcharts accessibility module](https://www.highcharts.com/docs/accessibility/accessibility-module). However, even without a screen reader, you can "see" how your Highcharts visualization will "look" in the generated HTML, which includes a special `<div>` with information that comes from a templated [screenReaderSection](https://api.highcharts.com/highcharts/accessibility.screenReaderSection). In the case of the chart above, the outer HTML is:
+
+```{html, eval = FALSE}
+<div id="highcharts-screen-reader-region-before-0" aria-label="Chart screen reader information." role="region" aria-hidden="false" style="position: relative;"></div>
+```
+
+
+Despite the fact that [Highcharts](https://www.highcharts.com/) and the [__{highcharter}__ R package](https://jkunst.com/highcharter/index.html) both have excellent documentation, I used the contents of this section as a trial-and-error guide when making this visualization, especially with respect to the screen-reader visibility of the annotations.
+
+The template for the contents is actually a customizable parameter ([`screenReadersection.beforeChartFormat`](https://api.highcharts.com/highcharts/accessibility.screenReaderSection.beforeChartFormat)), but I used the default format:
+
+```{html, eval = FALSE}
+<{headingTagName}>{chartTitle}</{headingTagName}><div>{typeDescription}</div><div>{chartSubtitle}</div><div>{chartLongdesc}</div><div>{playAsSoundButton}</div><div>{viewTableButton}</div><div>{xAxisDescription}</div><div>{yAxisDescription}</div><div>{annotationsTitle}{annotationsList}</div>
+```
+
+So, for example, this chart ends up with the title, description, type of chart, and axis descriptions (as well as options to view the chart as a table, the code for which I'm not including). It begins:
+
+```{html, eval = FALSE}
+<p>2017 Tour de France Stage 8: Dole - Station des Rousses</p>
+<div>Chart with 1879 data points.</div>
+<div>This chart uses the Highcharts Annotations feature to place labels at various points of interest. The labels are responsive and will be hidden to avoid overlap on small screens.</div>
+```
+
+The axis descriptions include ranges, which can be automatically calculated or described manually as a [`rangeDescription`](https://api.highcharts.com/highcharts/xAxis.accessibility.rangeDescription). Ours read:
+
+```{html, eval = FALSE}
+<div>The chart has 1 X axis displaying Distance. Range: 0 to 187.8 km.</div>
+<div>The chart has 1 Y axis displaying Elevation. Range: 0 to 1,553 meters</div>
+```
+
+The annotations all end up in an unordered list inside of a "Chart annotation summary" `<div>`. Here are the first couple items in the one for this chart:
+
+```{html, eval = FALSE}
+<ul style="list-style-type: none">
+  <li>Arbois, at distance 27.98km, elevation 255 meters.</li>
+  <li>Montrond, at distance 45.5km, elevation 611 meters.</li>
+  ...
+</ul>
+```
+
+I haven't yet figured out how to make the `linkedDescription` work with the higcharter package (you can see that I try to include it in several places in my R code). So, as of right now, that is missing from the screen-reader section. [Joshua Kunst's](https://jkunst.com/) {highcharter} package really does give you access to the whole JavaScript API, so I'm confident that I'll crack the code in due time.
+
+Accessibility best practices suggest that there's only so much that can be automatically generated when it comes to making a data visualization accessible (and I fully agree, of course). However, it's definitely worth making use of the accessibility tools Highcharts provides.
+
+You can learn more about Highcharts' research in this article:
+Alison Bert and Lisa Marie Hayes. 2018. “Making Charts Accessible for People with Visual Impairments: A Collaboration between Elsevier and Highcharts Sets a New Standard for Chart Accessibility.” <https://www.elsevier.com/connect/making-charts-accessible-for-people-with-visual-impairments>
+
+There are tons of other resources out there, and I'm not an expert. My best suggestion is to check out the collection from the dataviza11y group, [“Dataviz Accessibility Resources: A non-exhaustive and in-progress list of people and resources in Accessibility and Data Visualization.”](https://github.com/dataviza11y/resources)
+
