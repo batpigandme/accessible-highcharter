@@ -1,5 +1,6 @@
 # adapted from code for this chart by Silvia Canelón in repo for
 # <https://silvia.rbind.io/blog/2021-curated-compilations/01-data-viz-a11y/>
+# <https://github.com/spcanelon/silvia/blob/main/content/blog/2021-curated-compilations/01-data-viz-a11y/index.Rmarkdown>
 
 library(highcharter)
 library(palmerpenguins)
@@ -47,8 +48,8 @@ highchart() %>%
       # below gives you screenreader descriptions of annotations
       labelOptions = list(
         accessibility = list(
-          # probably wouldn't hard code description here if there was
-          # more than one point annotated
+          # wouldn't hard code description here if there was
+          # more than one point annotated, need lang options
           description = "A Chinstrap penguin observation mapping to a flipper length of 201mm and bill length of 54.2mm."
       )
     )
