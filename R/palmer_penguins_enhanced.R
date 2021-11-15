@@ -45,7 +45,7 @@ highchart() %>%
           shape = "connector" # defaults to 'callout'
         )
       ),
-      # below gives you screenreader descriptions of annotations
+      # below gives you screen-reader descriptions of annotations
       labelOptions = list(
         accessibility = list(
           # wouldn't hard code description here if there was
@@ -68,5 +68,5 @@ highchart() %>%
       keyboardNavigation = list(enabled = TRUE)
     )
   ) %>%
-  # can still use the custom colors and keep shape per group if added here
+  # use the custom colors and keep shape per group if added here
   hc_colors(c("darkorange", "purple", "#057276"))
