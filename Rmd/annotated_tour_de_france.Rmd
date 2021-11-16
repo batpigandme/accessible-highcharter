@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # adapted from Highcharts advanced annotations demo
 # <https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/annotations/>
 
-# read in data ------------------------------------------------------------
+# read in data ------------------------------------------------
 suppressPackageStartupMessages(library(tidyverse))
 url <- "https://gist.githubusercontent.com/batpigandme/1916d95323ddb29274bddf3316041fd3/raw/a8f394cb85b4ae995798c2596ffe912491d2fb7c/2017-tour-de-france-stage-8.csv"
 tdf_data <- read_csv(url) %>%
@@ -91,7 +91,7 @@ highchart() %>%
     )
   ) %>%
   hc_title(text = "2017 Tour de France Stage 8: Dole - Station des Rousses") %>%
-  hc_caption(text = "This chart uses the Highcharts Annotations feature to place labels at various points of interest. The labels are responsive and will be hidden to avoid overlap on small screens.") %>%
+  hc_caption(text = "An annotated line chart illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis, and distance is plotted on the X-axis. The line graph is interactive, and the user can trace the altitude level along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.") %>%
   # begin annotations
   # note that the points are grouped into separate lists
   # so that they can be styled in those groups
@@ -190,7 +190,13 @@ highchart() %>%
     accessibility = list(
       enabled = TRUE,
       keyboardNavigation = list(enabled = TRUE),
-      linkedDescription = 'This line chart uses the Highcharts Annotations feature to place labels at various points of interest. The labels are responsive and will be hidden to avoid overlap on small screens. Image description: An annotated line chart illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis, and distance is plotted on the X-axis. The line graph is interactive, and the user can trace the altitude level along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.',
+      linkedDescription = 'This line chart uses the Highcharts Annotations feature to place labels at various points of interest. 
+The labels are responsive and will be hidden to avoid overlap on small screens. 
+Image description: An annotated line chart illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. 
+Altitude is plotted on the Y-axis, and distance is plotted on the X-axis. 
+The line graph is interactive, and the user can trace the altitude level along the stage. 
+The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. 
+The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.',
       landmarkVerbosity = "one"
     ),
     area = list(
@@ -278,5 +284,5 @@ Accessibility best practices suggest that there's only so much that can be autom
 You can learn more about Highcharts' research in this article:
 Alison Bert and Lisa Marie Hayes. 2018. “Making Charts Accessible for People with Visual Impairments: A Collaboration between Elsevier and Highcharts Sets a New Standard for Chart Accessibility.” <https://www.elsevier.com/connect/making-charts-accessible-for-people-with-visual-impairments>
 
-There are tons of other resources out there, and I'm not an expert. My best suggestion is to check out the collection from the dataviza11y group, [“Dataviz Accessibility Resources: A non-exhaustive and in-progress list of people and resources in Accessibility and Data Visualization.”](https://github.com/dataviza11y/resources)
+There are tons of other resources out there, and I'm not an expert. My best suggestion is to check out the collection from the [dataviza11y](https://github.com/dataviza11y/) group, [“Dataviz Accessibility Resources: A non-exhaustive and in-progress list of people and resources in Accessibility and Data Visualization.”](https://github.com/dataviza11y/resources)
 
