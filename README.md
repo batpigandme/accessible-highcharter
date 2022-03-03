@@ -3,9 +3,10 @@
 
 ### Working examples
 
+* [Bar chart with keyboard navigation enabled](https://rpubs.com/maraaverick/highcharter-fruits-example)
 * [Accessible line chart demo](https://rpubs.com/maraaverick/accessible-highcharter)
 * [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart)
-* [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins) (WIP)
+* [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins)
 * [Annotated area chart of 2017 Tour de France](https://rpubs.com/maraaverick/tourdefrance_highcharter_demo)
 
 ### Blog posts
