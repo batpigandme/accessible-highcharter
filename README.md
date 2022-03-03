@@ -3,11 +3,11 @@
 
 ### Working examples
 
-* [Bar chart with keyboard navigation enabled](https://rpubs.com/maraaverick/highcharter-fruits-example)
-* [Accessible line chart demo](https://rpubs.com/maraaverick/accessible-highcharter)
-* [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart)
-* [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins)
-* [Annotated area chart of 2017 Tour de France](https://rpubs.com/maraaverick/tourdefrance_highcharter_demo)
+* [Bar chart with keyboard navigation enabled](https://rpubs.com/maraaverick/highcharter-fruits-example) ([source Rmd](https://github.com/batpigandme/accessible-highcharter/blob/main/Rmd/screen-reader-line-chart.Rmd))
+* [Accessible line chart demo](https://rpubs.com/maraaverick/accessible-highcharter) ([source Rmd](https://github.com/batpigandme/accessible-highcharter/blob/main/Rmd/screen-reader-line-chart.Rmd))
+* [Accessible pie chart demo](https://rpubs.com/maraaverick/highcharter-accessible-pie-chart) ([source Rmd](https://github.com/batpigandme/accessible-highcharter/blob/main/Rmd/accessible_pie_chart.Rmd))
+* [Accessible scatterplot with annotations](http://rpubs.com/maraaverick/highcharter_palmerpenguins) ([source Rmd](https://github.com/batpigandme/accessible-highcharter/blob/main/Rmd/accessible_highcharter_palmerpenguins.Rmd))
+* [Annotated area chart of 2017 Tour de France](https://rpubs.com/maraaverick/tourdefrance_highcharter_demo) ([source Rmd](https://github.com/batpigandme/accessible-highcharter/blob/main/Rmd/annotated_tour_de_france.Rmd))
 
 ### Blog posts
 
